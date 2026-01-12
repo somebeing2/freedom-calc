@@ -77,6 +77,13 @@ df = pd.read_json(pd.DataFrame(data).to_json()) # Simple conversion for Streamli
 st.title("💸 FreedomCalc.ai")
 st.caption("Financial Independence & Retire Early (FIRE) Simulator")
 
+# --- ⚠️ LEGAL WARNING ---
+st.warning("""
+    **⚠️ IMPORTANT DISCLAIMER:** This tool is for **educational and simulation purposes only**. 
+    It assumes constant returns and linear growth, which does not reflect real-world market volatility. 
+    This is **not** financial advice. Please consult a SEBI-registered investment advisor before making any investment decisions.
+""")
+
 # Top Level Metrics
 col1, col2, col3 = st.columns(3)
 
@@ -113,6 +120,16 @@ with col_a:
 with col_b:
     st.dataframe(df, use_container_width=True)
 
-# Footer
+# Footer & Legal Expander
 st.markdown("---")
-st.caption("Built with Python & Streamlit | Project by Kevin Joseph")
+with st.expander("📜 Full Legal Disclaimer & Terms of Use"):
+    st.write("""
+    1. **No Liability:** The creator of this tool is not liable for any financial losses incurred based on these calculations.
+    2. **Estimates Only:** Returns (12%), Inflation (6%), and Tax implications vary widely. This calculator acts as a rough guide, not a guarantee.
+    3. **Taxation:** This tool uses pre-tax numbers. In India, LTCG (Long Term Capital Gains) tax applies to withdrawals above ₹1.25 Lakhs/year.
+    """)
+
+# --- LINKEDIN FOOTER ---
+st.markdown(
+    "Built with Python & Streamlit | Project by **[Kevin Joseph](https://www.linkedin.com/in/kevin-joseph-in/)**"
+)
